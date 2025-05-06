@@ -1,13 +1,44 @@
-from main import *
+import tkinter as tk
+from tkinter import filedialog, messagebox
+from main import Colorizer
+import os
 
-color = Colorizer(height=480, width=640)
+colorizer = Colorizer(height=480, width=640)
 
-# color.processImage('inputs/landscape.jpg')
+# def process_image():
+#     file_path = filedialog.askopenfilename(title="Select a grayscale image", filetypes=[("Image files", "*.jpg *.png *.jpeg")])
+#     if file_path:
+#         try:
+#             colorizer.processImage(file_path)
+#             messagebox.showinfo("Success", f"Image colorized and saved to 'output/' folder.")
+#         except Exception as e:
+#             messagebox.showerror("Error", f"Failed to process image.\n{e}")
 
-color.processVideo('inputs/3588881-hd_1920_1080_18fps.mp4')
+def process_video():
+    file_path = filedialog.askopenfilename(title="Select a grayscale video", filetypes=[("Video files", "*.mp4 *.avi")])
+    if file_path:
+        try:
+            colorizer.processVideo(file_path)
+            messagebox.showinfo("Success", f"Video colorized and saved to 'output/' folder.")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to process video.\n{e}")
 
+# --- GUI Setup ---
+root = tk.Tk()
+root.title("ColorStream - Video Colorizer")
+root.state('zoomed')
+root.resizable(False, False)
 
+title_label = tk.Label(root, text="Real-time Video Colorizer", font=("Helvetica", 14, "bold"))
+title_label.pack(pady=20)
 
-### in assignment this and 5 has to add GUI 
-# interface for colorization video show and photo 
-# so Have to modify the code for these 2 assignemnts by adding GUI interface
+# btn_image = tk.Button(root, text="Colorize Image", width=25, height=2, command=process_image)
+# btn_image.pack(pady=10)
+
+btn_video = tk.Button(root, text="Colorize Video", width=25, height=2, command=process_video)
+btn_video.pack(pady=10)
+
+exit_btn = tk.Button(root, text="Exit", width=10, command=root.destroy)
+exit_btn.pack(pady=10)
+
+root.mainloop()
