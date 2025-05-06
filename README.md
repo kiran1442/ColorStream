@@ -18,21 +18,6 @@ A real-time colorization system that applies deep learning techniques to convert
 
 ---
 
-## Project Structure
-
-├── models/
-│   ├── colorization_deploy_v2.prototxt        # Model architecture
-│   ├── colorization_release_v2.caffemodel     # Pre-trained model weights
-│   └── pts_in_hull.npy                        # Cluster centers for ab channels
-├── inputs/
-│   └── grayscale_video.mp4                    # Sample input video
-├── colorizer.py                               # Core processing and DNN pipeline
-├── main.py                                    # Entry point for GUI (if extended)
-├── README.md                                  # This file
-├── requirement.txt                            # contains all the required packages
-
----
-
 ## Usage
 
 1. Install dependencies:
